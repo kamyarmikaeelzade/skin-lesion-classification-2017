@@ -5,3 +5,7 @@ __pycache__/
 data/
 results/models/
 results/logs/
+# results: keep structure, ignore content
+results/*
+!results/.gitkeep
+!results/**/.gitkeep
