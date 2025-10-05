@@ -1,0 +1,18 @@
+_base_: "configs/base.yaml"
+
+model:
+  backbone: "VGG16"
+  pretrained: "imagenet"
+  pooling: "avg"
+  dropout: 0.5
+  classifier:
+    hidden_units: [1024, 512]
+    activation: "relu"
+    l2: 1.0e-5
+    output_activation: "sigmoid"
+
+training:
+  epochs: 70
+  optimizer: "adam"
+  learning_rate: 1.0e-4
+  loss: "binary_crossentropy"

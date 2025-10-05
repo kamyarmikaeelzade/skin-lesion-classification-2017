@@ -1,0 +1,78 @@
+project:
+  name: "ISIC2017-SkinCancer-Benchmark"
+  seed: 42
+
+data:
+  train_csv: "data/train.csv"
+  valid_csv: "data/valid.csv"
+  test_csv:  "data/test.csv"
+  train_dir: "data/train"
+  valid_dir: "data/valid"
+  test_dir:  "data/test"
+  id_col: "image_id"
+  label_col: "melanoma"
+  class_names: ["benign", "melanoma"]
+  num_classes: 2
+  img_size: [224, 224]
+  channels: 3
+  batch_size: 32
+  shuffle: true
+  rescale: 1.0/255
+
+augmentation:
+  enabled: false
+
+model:
+  backbone: "BaseModel"
+  pretrained: "imagenet"
+  pooling: "avg"
+  dropout: 0.3
+  classifier:
+    hidden_units: [512]
+    activation: "relu"
+    l2: 1.0e-5
+    output_activation: "sigmoid"
+
+training:
+  epochs: 50
+  optimizer: "adam"
+  learning_rate: 1.0e-4
+  weight_decay: 0.0
+  loss: "binary_crossentropy"
+  metrics: ["accuracy", "AUC"]
+  class_weights: null
+  mixed_precision: false
+
+callbacks:
+  early_stopping:
+    enabled: true
+    monitor: "val_auc"
+    mode: "max"
+    patience: 10
+  reduce_lr_on_plateau:
+    enabled: true
+    monitor: "val_auc"
+    mode: "max"
+    factor: 0.5
+    patience: 3
+    min_lr: 1.0e-6
+  checkpoint:
+    enabled: true
+    monitor: "val_auc"
+    mode: "max"
+    filepath: "results/models/{backbone}_best.h5"
+    save_weights_only: false
+  tensorboard:
+    enabled: true
+    log_dir: "results/logs/{backbone}"
+
+evaluation:
+  thresholds:
+    default: 0.5
+
+logging:
+  output_dir: "results"
+  models_dir: "results/models"
+  logs_dir: "results/logs"
+  metrics_dir: "results/metrics"
+  figures_dir: "results/figures"

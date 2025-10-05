@@ -1,0 +1,21 @@
+_base_: "configs/base.yaml"
+
+data:
+  img_size: [300, 300]
+  batch_size: 24
+
+model:
+  backbone: "EfficientNetB3"
+  pretrained: "imagenet"
+  pooling: "avg"
+  dropout: 0.35
+  classifier:
+    hidden_units: [512]
+    activation: "relu"
+    l2: 1.0e-5
+    output_activation: "sigmoid"
+
+training:
+  epochs: 60
+  optimizer: "adam"
+  learning_rate: 2.0e-4
