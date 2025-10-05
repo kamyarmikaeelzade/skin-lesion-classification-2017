@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+title: "Skin cancer classification with CNNs on ISIC-2017"
+authors:
+  - family-names: "Nourmohammadi"   # edit & complete
+    given-names: "Massoume"
+  - family-names: "Mikaeelzadeh"
+    given-names: "Kamyar"
+  - family-names: "Goudarzi"
+    given-names: "Ramin"
+  - family-names: "Khajeh-khalili"
+    given-names: "Farzad"
+version: "0.1.0"
+date-released: "2025-10-05"

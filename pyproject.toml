@@ -1,0 +1,6 @@
+[project]
+name = "melanoma-isic"
+version = "0.1.0"
+description = "CNN-based melanoma classification on ISIC-2017 with hair removal & contrast enhancement"
+readme = "README.md"
+requires-python = ">=3.9"
