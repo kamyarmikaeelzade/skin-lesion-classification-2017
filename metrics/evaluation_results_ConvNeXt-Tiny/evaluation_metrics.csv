@@ -1,0 +1,2 @@
+True Negatives,False Positives,False Negatives,True Positives,Precision,Recall,F1-Score,Balanced Accuracy,AUC
+0,483,0,117,0.195,1.0,0.3263598326359833,0.5,0.48139300313213357
